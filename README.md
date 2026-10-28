@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SheSafe Live | know if a street is safe before you walk it</title>
+    <title>SheSafe Live | Route Safety Before You Walk</title>
     <meta
       name="description"
-      content="SheSafe Live helps women feel safer by checking route risk, real-time local reports, and verified safety insights before they walk alone."
+      content="SheSafe Live helps women check route safety before walking alone. Get real-time risk scores, live reports, and trusted alerts."
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,6 +21,7 @@
         --navy-2: #233a75;
         --soft: #f8fafc;
         --muted: #64748b;
+        --green: #10b981;
       }
 
       html {
@@ -55,6 +56,10 @@
         background:
           radial-gradient(circle at top left, rgba(125, 211, 252, 0.22), transparent 35%),
           radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.18), transparent 32%);
+      }
+
+      .range {
+        accent-color: #1a2b5c;
       }
     </style>
   </head>
@@ -274,6 +279,80 @@
         </div>
       </section>
 
+      <section class="bg-white px-6 py-16 md:px-12">
+        <div class="section-shell grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="rounded-[32px] border border-slate-200 bg-slate-50 p-6 shadow-sm md:p-8">
+            <div class="mb-6 flex items-center justify-between">
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">Route risk calculator</p>
+                <h2 class="mt-2 text-2xl font-black text-[#1A2B5C]">Check route risk live</h2>
+              </div>
+              <div class="rounded-full bg-white px-3 py-1 text-xs font-bold text-slate-700 shadow-sm">Demo</div>
+            </div>
+
+            <div class="space-y-5">
+              <label class="block">
+                <div class="mb-2 flex justify-between text-sm text-slate-600">
+                  <span>Lighting</span>
+                  <span id="lightingLabel">80%</span>
+                </div>
+                <input id="lighting" class="range w-full" type="range" min="0" max="100" value="80" />
+              </label>
+
+              <label class="block">
+                <div class="mb-2 flex justify-between text-sm text-slate-600">
+                  <span>Foot traffic</span>
+                  <span id="trafficLabel">70%</span>
+                </div>
+                <input id="traffic" class="range w-full" type="range" min="0" max="100" value="70" />
+              </label>
+
+              <label class="block">
+                <div class="mb-2 flex justify-between text-sm text-slate-600">
+                  <span>Transport access</span>
+                  <span id="transportLabel">65%</span>
+                </div>
+                <input id="transport" class="range w-full" type="range" min="0" max="100" value="65" />
+              </label>
+
+              <label class="block">
+                <div class="mb-2 flex justify-between text-sm text-slate-600">
+                  <span>Time of day</span>
+                  <span id="timeLabel">Night</span>
+                </div>
+                <select id="timeOfDay" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none">
+                  <option value="day">Day</option>
+                  <option value="evening">Evening</option>
+                  <option value="night" selected>Night</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="rounded-[32px] border border-slate-200 bg-[#1A2B5C] p-6 text-white shadow-xl md:p-8">
+            <p class="text-sm uppercase tracking-[0.2em] text-blue-200">Live result</p>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span id="scoreValue" class="text-5xl font-black">72</span>
+              <span class="text-lg text-blue-200">/100</span>
+            </div>
+            <div class="mt-4">
+              <div class="mb-2 flex items-center justify-between text-sm text-blue-100">
+                <span>Risk level</span>
+                <span id="riskLevel" class="font-bold">Moderate</span>
+              </div>
+              <div class="h-2.5 w-full rounded-full bg-white/10">
+                <div id="scoreBar" class="h-2.5 rounded-full bg-gradient-to-r from-emerald-400 via-yellow-400 to-orange-500" style="width: 72%"></div>
+              </div>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm text-blue-100">
+              <li id="routeText">• Route is mostly safe, but visibility drops after dark.</li>
+              <li>• Nearby transit access is good.</li>
+              <li>• Community report count is stable.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section id="safety-map" class="bg-white px-6 py-16 md:px-12">
         <div class="section-shell grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
@@ -309,7 +388,7 @@
               <li>• Well-lit streets</li>
               <li>• High foot traffic</li>
               <li>• 3 verified reports this week</li>
-              <li>• No recent safety alerts</li>
+              <li>• No recent alerts</li>
             </ul>
           </div>
         </div>
@@ -454,10 +533,55 @@
         box.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
+      function updateRisk() {
+        const lighting = Number(document.getElementById('lighting').value);
+        const traffic = Number(document.getElementById('traffic').value);
+        const transport = Number(document.getElementById('transport').value);
+        const timeOfDay = document.getElementById('timeOfDay').value;
+
+        const timeMultiplier = timeOfDay === 'night' ? 18 : timeOfDay === 'evening' ? 10 : 0;
+        const score = Math.max(0, Math.min(100, Math.round(( lighting * 0.35 ) + ( traffic * 0.35 ) + ( transport * 0.2 ) + ( 100 - timeMultiplier ) * 0.1 )));
+
+        const riskLevel = score >= 80 ? 'Low' : score >= 60 ? 'Moderate' : score >= 40 ? 'Elevated' : 'High';
+        const scoreBar = document.getElementById('scoreBar');
+        const scoreValue = document.getElementById('scoreValue');
+        const riskLabel = document.getElementById('riskLevel');
+        const routeText = document.getElementById('routeText');
+
+        document.getElementById('lightingLabel').textContent = `${lighting}%`;
+        document.getElementById('trafficLabel').textContent = `${traffic}%`;
+        document.getElementById('transportLabel').textContent = `${transport}%`;
+        document.getElementById('timeLabel').textContent = timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1);
+
+        scoreValue.textContent = score;
+        riskLabel.textContent = riskLevel;
+        scoreBar.style.width = `${score}%`;
+
+        if (riskLevel === 'Low') {
+          routeText.textContent = '• Route is well-lit and highly active, ideal for walking after dark.';
+        } else if (riskLevel === 'Moderate') {
+          routeText.textContent = '• Route is mostly safe, but visibility drops after dark.';
+        } else if (riskLevel === 'Elevated') {
+          routeText.textContent = '• Route has limited visibility and fewer people around after dark.';
+        } else {
+          routeText.textContent = '• Route may be unsafe. Consider another path or share your location with a trusted contact.';
+        }
+      }
+
       const button = document.getElementById('checkSafetyBtn');
       if (button) {
         button.addEventListener('click', checkSafety);
       }
+
+      ['lighting', 'traffic', 'transport', 'timeOfDay'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('input', updateRisk);
+          el.addEventListener('change', updateRisk);
+        }
+      });
+
+      updateRisk();
     </script>
   </body>
 </html>
