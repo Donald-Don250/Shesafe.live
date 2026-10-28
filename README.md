@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SheSafe Live</title>
+    <title>SheSafe Live | Know if a street is safe before you walk it</title>
     <meta
       name="description"
-      content="SheSafe Live helps women assess route safety before walking alone. Real-time safety insights and live community reporting."
+      content="SheSafe Live gives women real-time safety insights, route risk scores, and live community reports before they walk alone."
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,11 +18,12 @@
     <style>
       :root {
         --navy: #1a2b5c;
-        --navy-2: #233a75;
-        --sky: #eaf3ff;
-        --soft: #f4f7fb;
+        --navy-strong: #13234d;
+        --navy-soft: #edf4ff;
+        --sky: #dfeeff;
+        --muted: #64748b;
         --green: #10b981;
-        --text: #0f172a;
+        --bg: #f8fafc;
       }
 
       html {
@@ -31,7 +32,8 @@
 
       body {
         font-family: 'Inter', sans-serif;
-        color: var(--text);
+        color: #0f172a;
+        background: white;
       }
 
       .section-shell {
@@ -45,18 +47,23 @@
       }
 
       .shadow-soft {
-        box-shadow: 0 20px 50px rgba(26, 43, 92, 0.12);
+        box-shadow: 0 20px 60px rgba(26, 43, 92, 0.14);
       }
 
       .grid-pattern {
-        background-image: radial-gradient(rgba(30, 64, 175, 0.08) 1px, transparent 1px);
+        background-image: radial-gradient(rgba(30, 64, 175, 0.09) 1px, transparent 1px);
         background-size: 18px 18px;
+      }
+
+      .hero-glow {
+        background: radial-gradient(circle at top left, rgba(125, 211, 252, 0.25), transparent 38%),
+          radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.18), transparent 32%);
       }
     </style>
   </head>
   <body class="bg-white text-slate-900 antialiased">
     <div class="bg-[#1A2B5C] text-white">
-      <div class="section-shell flex items-center justify-center gap-2 px-6 py-2.5 text-center text-xs md:text-sm">
+      <div class="section-shell flex items-center justify-center gap-2 px-6 py-2.5 text-center text-[11px] md:text-xs">
         <span class="inline-block h-2.5 w-2.5 rounded-full bg-green-400 animate-pulse"></span>
         <span class="font-bold">LIVE:</span>
         <span>Protecting women in 190+ countries • Works offline • Encrypted</span>
@@ -65,12 +72,12 @@
 
     <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 glass">
       <div class="section-shell flex items-center justify-between px-6 py-4 md:px-12">
-        <div class="flex items-center gap-3">
+        <a href="#top" class="flex items-center gap-3">
           <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-xl">🛡️</div>
           <div>
             <p class="text-lg font-black tracking-tight text-[#1A2B5C]">SheSafe Live</p>
           </div>
-        </div>
+        </a>
 
         <nav class="hidden items-center gap-8 text-sm font-medium text-[#1A2B5C] md:flex">
           <a href="#how-it-works" class="transition hover:text-blue-600">How it works</a>
@@ -87,27 +94,27 @@
       </div>
     </header>
 
-    <main>
-      <section class="relative overflow-hidden bg-white px-6 py-12 md:px-12 md:py-20">
-        <div class="absolute inset-0 grid-pattern opacity-50"></div>
+    <main id="top">
+      <section class="hero-glow relative overflow-hidden bg-white px-6 py-12 md:px-12 md:py-20">
+        <div class="absolute inset-0 grid-pattern opacity-60"></div>
         <div class="section-shell relative grid items-center gap-12 md:grid-cols-2">
           <div>
-            <span class="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-blue-700">
+            <span class="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-700">
               Peace of mind before you leave
             </span>
 
-            <h1 class="mt-6 max-w-xl text-5xl font-black leading-[0.9] tracking-[-0.05em] text-[#1A2B5C] md:text-7xl">
+            <h1 class="mt-6 max-w-xl text-5xl font-black leading-[0.9] tracking-[-0.06em] text-[#1A2B5C] md:text-7xl">
               Know if a street is safe<br />before you walk it.
             </h1>
 
             <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
-              AI-powered safety insights and live community reporting for women walking alone, commuting
-              late, or exploring a new city.
+              AI-powered safety insights and live community reporting for women walking alone, commuting late,
+              or exploring a new city.
             </p>
 
             <div class="mt-8 max-w-xl">
               <div class="flex flex-col gap-3 sm:flex-row">
-                <div class="flex flex-1 items-center rounded-full border border-blue-200 bg-blue-50/60 px-4 py-3 shadow-sm">
+                <div class="flex flex-1 items-center rounded-full border border-blue-200 bg-blue-50/70 px-4 py-3 shadow-sm">
                   <span class="mr-2 text-lg">📍</span>
                   <input
                     id="cityInput"
@@ -131,7 +138,7 @@
             </div>
 
             <div id="resultBox" class="mt-6 hidden max-w-lg rounded-2xl border border-green-200 bg-green-50 p-4 shadow-sm" aria-live="polite">
-              <p class="text-xs font-bold uppercase tracking-[0.2em] text-green-700">Safe • Low risk • Demo</p>
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-green-700">Safe • Low risk • Demo</p>
               <p id="resultTitle" class="mt-1 text-xl font-black text-slate-900">87/100 Safe - Well-lit, high foot traffic</p>
               <p id="resultQuote" class="mt-1 text-xs text-slate-500">"Saved me on my night shift" - Sarah, London</p>
             </div>
@@ -315,13 +322,12 @@
 
         const city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : 'Your area';
         const score = 87;
-        const locationText = `${city}: ${score}/100 Safe - Well-lit, high foot traffic`;
 
         const title = document.getElementById('resultTitle');
         const quote = document.getElementById('resultQuote');
 
         if (title) {
-          title.textContent = locationText;
+          title.textContent = `${city}: ${score}/100 Safe - Well-lit, high foot traffic`;
         }
 
         if (quote) {
@@ -332,7 +338,10 @@
         box.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
-      document.getElementById('checkSafetyBtn')?.addEventListener('click', checkSafety);
+      const button = document.getElementById('checkSafetyBtn');
+      if (button) {
+        button.addEventListener('click', checkSafety);
+      }
     </script>
   </body>
 </html>
