@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SheSafe Live | Route Safety Before You Walk</title>
+    <title>SheSafe Live | Safety before you walk</title>
     <meta
       name="description"
-      content="SheSafe Live helps women check route safety before walking alone. Get real-time risk scores, live reports, and trusted alerts."
+      content="SheSafe Live helps women check if a street is safe before walking alone using real-time reports, AI safety analysis, and live route insights."
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,7 +21,6 @@
         --navy-2: #233a75;
         --soft: #f8fafc;
         --muted: #64748b;
-        --green: #10b981;
       }
 
       html {
@@ -540,7 +539,7 @@
         const timeOfDay = document.getElementById('timeOfDay').value;
 
         const timeMultiplier = timeOfDay === 'night' ? 18 : timeOfDay === 'evening' ? 10 : 0;
-        const score = Math.max(0, Math.min(100, Math.round(( lighting * 0.35 ) + ( traffic * 0.35 ) + ( transport * 0.2 ) + ( 100 - timeMultiplier ) * 0.1 )));
+        const score = Math.max(0, Math.min(100, Math.round((lighting * 0.35) + (traffic * 0.35) + (transport * 0.2) + (100 - timeMultiplier) * 0.1)));
 
         const riskLevel = score >= 80 ? 'Low' : score >= 60 ? 'Moderate' : score >= 40 ? 'Elevated' : 'High';
         const scoreBar = document.getElementById('scoreBar');
