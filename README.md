@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SheSafe Live | Know if a street is safe before you walk it</title>
+    <title>SheSafe Live | know if a street is safe before you walk it</title>
     <meta
       name="description"
-      content="SheSafe Live gives women real-time safety insights, route risk scores, and live community reports before they walk alone."
+      content="SheSafe Live helps women feel safer by checking route risk, real-time local reports, and verified safety insights before they walk alone."
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,12 +18,9 @@
     <style>
       :root {
         --navy: #1a2b5c;
-        --navy-strong: #13234d;
-        --navy-soft: #edf4ff;
-        --sky: #dfeeff;
+        --navy-2: #233a75;
+        --soft: #f8fafc;
         --muted: #64748b;
-        --green: #10b981;
-        --bg: #f8fafc;
       }
 
       html {
@@ -33,7 +30,6 @@
       body {
         font-family: 'Inter', sans-serif;
         color: #0f172a;
-        background: white;
       }
 
       .section-shell {
@@ -47,17 +43,18 @@
       }
 
       .shadow-soft {
-        box-shadow: 0 20px 60px rgba(26, 43, 92, 0.14);
+        box-shadow: 0 25px 60px rgba(26, 43, 92, 0.14);
       }
 
       .grid-pattern {
-        background-image: radial-gradient(rgba(30, 64, 175, 0.09) 1px, transparent 1px);
+        background-image: radial-gradient(rgba(30, 64, 175, 0.08) 1px, transparent 1px);
         background-size: 18px 18px;
       }
 
       .hero-glow {
-        background: radial-gradient(circle at top left, rgba(125, 211, 252, 0.25), transparent 38%),
-          radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.18), transparent 32%);
+        background:
+          radial-gradient(circle at top left, rgba(125, 211, 252, 0.22), transparent 35%),
+          radial-gradient(circle at bottom right, rgba(96, 165, 250, 0.18), transparent 32%);
       }
     </style>
   </head>
@@ -81,6 +78,7 @@
 
         <nav class="hidden items-center gap-8 text-sm font-medium text-[#1A2B5C] md:flex">
           <a href="#how-it-works" class="transition hover:text-blue-600">How it works</a>
+          <a href="#features" class="transition hover:text-blue-600">Features</a>
           <a href="#safety-map" class="transition hover:text-blue-600">Safety Map</a>
           <a href="#pricing" class="transition hover:text-blue-600">Pricing</a>
         </nav>
@@ -181,7 +179,30 @@
         </div>
       </section>
 
-      <section id="how-it-works" class="bg-slate-50 px-6 py-16 md:px-12">
+      <section class="bg-slate-50 px-6 py-16 md:px-12">
+        <div class="section-shell">
+          <div class="grid gap-6 md:grid-cols-4">
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+              <p class="text-3xl font-black text-[#1A2B5C]">190+</p>
+              <p class="mt-2 text-sm text-slate-600">countries supported</p>
+            </div>
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+              <p class="text-3xl font-black text-[#1A2B5C]">4.9/5</p>
+              <p class="mt-2 text-sm text-slate-600">average trust rating</p>
+            </div>
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+              <p class="text-3xl font-black text-[#1A2B5C]">24/7</p>
+              <p class="mt-2 text-sm text-slate-600">live safety updates</p>
+            </div>
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+              <p class="text-3xl font-black text-[#1A2B5C]">0%</p>
+              <p class="mt-2 text-sm text-slate-600">location data sold</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="bg-white px-6 py-16 md:px-12">
         <div class="section-shell">
           <div class="mx-auto max-w-3xl text-center">
             <p class="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">How it works</p>
@@ -214,6 +235,41 @@
                 Real women share short updates so you know what is happening on the ground right now.
               </p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="bg-slate-50 px-6 py-16 md:px-12">
+        <div class="section-shell">
+          <div class="mx-auto max-w-3xl text-center">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">Features</p>
+            <h2 class="mt-3 text-3xl font-black text-[#1A2B5C] md:text-4xl">Built around safety, privacy, and trust</h2>
+          </div>
+
+          <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100 text-2xl">🛡️</div>
+              <h3 class="text-lg font-bold text-[#1A2B5C]">Safety score</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">See a route rating before you leave home.</p>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-2xl">🔒</div>
+              <h3 class="text-lg font-bold text-[#1A2B5C]">Private by design</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">We never sell exact location data or personal movement logs.</p>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-2xl">📡</div>
+              <h3 class="text-lg font-bold text-[#1A2B5C]">Offline ready</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Access saved maps and alerts when connectivity is poor.</p>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-100 text-2xl">🚨</div>
+              <h3 class="text-lg font-bold text-[#1A2B5C]">Trusted alerts</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Get notified if a route becomes risky or a report is flagged nearby.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -253,8 +309,49 @@
               <li>• Well-lit streets</li>
               <li>• High foot traffic</li>
               <li>• 3 verified reports this week</li>
-              <li>• No recent alerts</li>
+              <li>• No recent safety alerts</li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[#1A2B5C] px-6 py-16 text-white md:px-12">
+        <div class="section-shell">
+          <div class="mx-auto max-w-3xl text-center">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-blue-200">Loved by women in motion</p>
+            <h2 class="mt-3 text-3xl font-black md:text-4xl">Real stories from real routes</h2>
+          </div>
+
+          <div class="mt-10 grid gap-6 md:grid-cols-3">
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <p class="text-lg leading-7 text-blue-50">
+                "I checked my route before a late shift and avoided a poorly lit stretch. It saved me from walking alone in the wrong area."
+              </p>
+              <div class="mt-5 text-sm text-blue-100">
+                <p class="font-bold">Sarah M.</p>
+                <p>Night shift worker</p>
+              </div>
+            </div>
+
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <p class="text-lg leading-7 text-blue-50">
+                "The live map helped me choose a safer route during my first week in the city. It felt like having a trusted guide in my pocket."
+              </p>
+              <div class="mt-5 text-sm text-blue-100">
+                <p class="font-bold">Amina K.</p>
+                <p>New city commuter</p>
+              </div>
+            </div>
+
+            <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <p class="text-lg leading-7 text-blue-50">
+                "The privacy-first model matters. I know my exact location is not being sold or exposed. That trust is why I use it."
+              </p>
+              <div class="mt-5 text-sm text-blue-100">
+                <p class="font-bold">Nia R.</p>
+                <p>University student</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -288,6 +385,25 @@
                 $9.99<span class="text-sm font-normal text-slate-500">/mo</span>
               </p>
               <p class="mt-2 text-xs text-slate-500">Family sharing + emergency alerts</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white px-6 py-16 md:px-12">
+        <div class="section-shell rounded-[32px] border border-slate-200 bg-slate-50 p-8 shadow-sm md:p-10">
+          <div class="grid items-center gap-8 md:grid-cols-[1fr_auto]">
+            <div>
+              <p class="text-sm font-bold uppercase tracking-[0.2em] text-blue-600">Safety starts here</p>
+              <h2 class="mt-3 text-3xl font-black text-[#1A2B5C] md:text-4xl">Take the next step toward safer walks.</h2>
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row">
+              <a href="#pricing" class="rounded-full bg-[#1A2B5C] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#233a75]">
+                Get started
+              </a>
+              <a href="#how-it-works" class="rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-bold text-[#1A2B5C] transition hover:border-slate-300">
+                Learn more
+              </a>
             </div>
           </div>
         </div>
